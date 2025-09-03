@@ -12,10 +12,6 @@ let secondsUntilBirthday = ((birthdayMonth - 1) * DaysInMonth + birthdayDay - 1)
 print("Количество секунд с начала года до моего дня рождеения - \(secondsUntilBirthday).\n")
 
 
-
-
-
-
 // 2. Посчитайте в каком квартале вы родились
 
 let monthsInQuarter = 3
