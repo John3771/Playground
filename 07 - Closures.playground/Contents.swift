@@ -64,6 +64,7 @@ print(maxElement ?? 0)
  отсортируйте строку так, чтобы вначале шли гласные в алфавитном порядке,
  потом согласные, потом цифры, а потом символы
  */
+
 let randomString = "An operator is a special symbol or phrase that you use to check, change, or combine values. For example, the addition operator (+) adds two numbers, as in let i = 1 + 2, and the logical AND operator (&&) combines two Boolean values, as in if enteredDoorCode && passedRetinaScan."
 let char = Array(randomString)
 //print(char)
@@ -94,3 +95,24 @@ let sortedArray = char.sorted { char1, char2 in
 
 let result = String(sortedArray)
 print(result)
+
+/*
+ 5. Проделайте задание №3 но для нахождения минимальной и максимальной буквы из массива букв (соответственно скалярному значению)
+ */
+
+func findMinAndMaxStringElement(in array: [Character], using closure: (Character, Character) -> Bool) -> Character {
+    var temp: Character = " "
+    
+    for letter in array {
+        if closure(letter, temp) {
+            temp = letter
+        }
+    }
+    return temp
+}
+
+let minLetter = findMinAndMaxStringElement(in: char) { current, temp in
+    temp == " " || current.unicodeScalars.first!.value < temp.unicodeScalars.first!.value
+}
+
+print("скаляр - \(minLetter.unicodeScalars.first!.value), значение \"\(minLetter)\"")
