@@ -1,10 +1,10 @@
 
 /*
-1. Написать функцию, которая ничего не возвращает
+ 1. Написать функцию, которая ничего не возвращает
  и принимает только один клоужер, который ничего не принимает и ничего не возвращает.
  Функция должна просто посчитать от 1 до 10 в цикле и после этого вызвать клоужер.
  Добавьте println в каждый виток цикла и в клоужер и проследите за очередностью выполнения команд.
-*/
+ */
 
 func weirdFunc(_ closure: () -> Void) -> Void {
     for i in 1...10 {
@@ -57,29 +57,40 @@ let maxElement = findElement(in: integers) { current, temp in
 
 print(maxElement ?? 0)
 
-
-func findElement2(in array: [Int], using closure:(Int, Int?) -> Bool) -> Int? {
-    var temp: Int? = nil
-    
-    for element in array {
-        if closure(element, temp) {
-            temp = element
-        }
-    }
-    return temp
-}
-
-let minElement = findElement2(in: integers) { element, temp in
-    temp == nil || element < temp!
-}
-print(minElement ?? 0)
-
 /*
  4. Создайте произвольную строку.
- Преобразуйте ее в массив букв.
- Используя метод массивов sorted отсортируйте строку так, чтобы вначале шли гласные в алфавитном порядке, потом согласные, потом цифры, а потом символы
+ +Преобразуйте ее в массив букв.
+ Используя метод массивов sorted
+ отсортируйте строку так, чтобы вначале шли гласные в алфавитном порядке,
+ потом согласные, потом цифры, а потом символы
  */
-let randomString = "An operator is a special symbol or phrase that you use to check, change, or combine values."
-
+let randomString = "An operator is a special symbol or phrase that you use to check, change, or combine values. For example, the addition operator (+) adds two numbers, as in let i = 1 + 2, and the logical AND operator (&&) combines two Boolean values, as in if enteredDoorCode && passedRetinaScan."
 let char = Array(randomString)
-print(char)
+//print(char)
+
+func group(for char: Character) -> Int {
+    let vowels = "aeiouyAEIOUY"
+    if vowels.contains(char) {
+        return 0
+    } else if char.isLetter {
+        return 1
+    } else if char.isNumber {
+        return 2
+    } else {
+        return 3
+    }
+}
+
+let sortedArray = char.sorted { char1, char2 in
+    let g1 = group(for: char1)
+    let g2 = group(for: char2)
+    
+    if g1 == g2 {
+        return String(char1).lowercased() < String(char2).lowercased()
+    } else {
+        return g1 < g2
+    }
+}
+
+let result = String(sortedArray)
+print(result)
