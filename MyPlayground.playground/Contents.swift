@@ -1,35 +1,39 @@
-enum HorizontalMove: String {
-    case a, b, c, d, e, f, g, h
+
+enum ArithmeticExpression {
+    case number(Int)
+    indirect case addition(ArithmeticExpression, ArithmeticExpression)
+    indirect case multiplication(ArithmeticExpression, ArithmeticExpression)
 }
 
-var horizontalMove = HorizontalMove.a
+let five = ArithmeticExpression.number(5)
+let four = ArithmeticExpression.number(2)
+let summ = ArithmeticExpression.addition(five, four)
+let product = ArithmeticExpression.multiplication(summ, ArithmeticExpression.number(2))
 
-switch horizontalMove {
-case .a: 1
-case .b: 2
-case .c: 3
-case .d: 4
-case .e: 5
-case .f: 6
-case .g: 7
-case .h: 8
+print(product)
+
+
+func evaluate(_ expression: ArithmeticExpression) -> Int {
+    switch expression {
+    case let .number(value):
+        return value
+    case let .addition(left, right):
+        return evaluate(left) + evaluate(right)
+    case let .multiplication(left, right):
+        return evaluate(left) * evaluate(right)
+    }
 }
 
-var verticalMove = 1
+print(evaluate(product))
 
-switch verticalMove {
-case 1: 1
-case 2: 2
-case 3: 3
-case 4: 4
-case 5: 5
-case 6: 6
-case 7: 7
-case 8: 8
-default: 1
+
+let base = 3
+let power = 10
+
+var answer = 1
+
+for _ in 1...power {
+    answer *= base
 }
 
-
-let zero = 0%0
-
-print(zero)
+print(answer)
