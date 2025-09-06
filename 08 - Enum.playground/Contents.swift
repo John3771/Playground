@@ -120,8 +120,6 @@ printChessBoard(with: currentCgessSituation)
 func nextMove1(_ piece: inout ChessPieces, move: (String, Int)) {
     let file = move.0.lowercased()
     let rank = move.1
-    
-    
 }
 
 func nextMove(_ piece: inout ChessPieces, move: (String, Int)) {
@@ -141,49 +139,3 @@ func nextMove(_ piece: inout ChessPieces, move: (String, Int)) {
         position: Position(horizontal: fileChar, vertical: rank)
     )
 }
-
-let somePoint = (0, 3)
-switch somePoint {
-case (0, 0):
-    print("\(somePoint) is at the origin")
-case (_, 0):
-    print("\(somePoint) is on the x-axis")
-case (0, _):
-    print("\(somePoint) is on the y-axis")
-case (-2...2, -2...2):
-    print("\(somePoint) is inside the box")
-default:
-    print("\(somePoint) is outside of the box")
-}
-
-let anotherPoint = (2, 0)
-switch anotherPoint {
-case (let x, 0):
-    print("on the x-axis with an x value of \(x)")
-case (0, let y):
-    print("on the y-axis with a y value of \(y)")
-case let (x, y):
-    print("somewhere else at (\(x), \(y))")
-}
-// Prints "on the x-axis with an x value of 2"
-
-
-let yetAnotherPoint = (1, -1)
-switch yetAnotherPoint {
-case let (x, y) where x == y:
-    print("(\(x), \(y)) is on the line x == y")
-case let (x, y) where x == -y:
-    print("(\(x), \(y)) is on the line x == -y")
-case let (x, y):
-    print("(\(x), \(y)) is just some arbitrary point")
-}
-// Prints "(1, -1) is on the line x == -y"
-
-let stillAnotherPoint = (9, 0)
-switch stillAnotherPoint {
-case (let distance, 0), (0, let distance):
-    print("On an axis, \(distance) from the origin")
-default:
-    print("Not on an axis")
-}
-// Prints "On an axis, 9 from the origin"

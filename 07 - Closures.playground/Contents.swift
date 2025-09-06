@@ -31,6 +31,7 @@ print(inDescendingOrder)
 
 /*
  3. Напишите функцию, которая принимает массив интов и клоужер и возвращает инт.
+ 
  Клоужер должен принимать 2 инта (один опшинал) и возвращать да или нет.
  В самой функции создайте опшинал переменную.
  
@@ -44,7 +45,7 @@ func findElement(in array: [Int], using closure: (Int, Int?) -> Bool) -> Int? {
     var temp: Int? = nil
     
     for element in array {
-        if closure(element, temp) {
+        if closure (element, temp) {
             temp = element
         }
     }
@@ -66,53 +67,71 @@ print(maxElement ?? 0)
  */
 
 let randomString = "An operator is a special symbol or phrase that you use to check, change, or combine values. For example, the addition operator (+) adds two numbers, as in let i = 1 + 2, and the logical AND operator (&&) combines two Boolean values, as in if enteredDoorCode && passedRetinaScan."
-let char = Array(randomString)
-//print(char)
+let characters = Array(randomString)
 
-func group(for char: Character) -> Int {
+func anotherGroup(for char: Character) -> Int {
     let vowels = "aeiouyAEIOUY"
-    if vowels.contains(char) {
-        return 0
-    } else if char.isLetter {
-        return 1
-    } else if char.isNumber {
-        return 2
-    } else {
-        return 3
-    }
+    
+    if vowels.contains(char)    { return 0 }
+    else if char.isLetter       { return 1 }
+    else if char.isNumber       { return 2 }
+    else                        { return 3 }
 }
 
-let sortedArray = char.sorted { char1, char2 in
-    let g1 = group(for: char1)
-    let g2 = group(for: char2)
-    
-    if g1 == g2 {
+let sortedShit = characters.sorted { char1, char2 in
+    if anotherGroup(for: char1) == anotherGroup(for: char2) {
         return String(char1).lowercased() < String(char2).lowercased()
     } else {
-        return g1 < g2
+        return anotherGroup(for: char1) < anotherGroup(for: char2)
     }
 }
 
-let result = String(sortedArray)
-print(result)
-
-/*
- 5. Проделайте задание №3 но для нахождения минимальной и максимальной буквы из массива букв (соответственно скалярному значению)
- */
-
-func findMinAndMaxStringElement(in array: [Character], using closure: (Character, Character) -> Bool) -> Character {
-    var temp: Character = " "
-    
-    for letter in array {
-        if closure(letter, temp) {
-            temp = letter
-        }
-    }
-    return temp
-}
-
-let minLetter = findMinAndMaxStringElement(in: char) { current, temp in
-    temp == " " || current.unicodeScalars.first!.value < temp.unicodeScalars.first!.value
-}
-
-print("скаляр - \(minLetter.unicodeScalars.first!.value), значение \"\(minLetter)\"")
+print(sortedShit)
+//
+//func group(for char: Character) -> Int {
+//    let vowels = "aeiouyAEIOUY"
+//    if vowels.contains(char) {
+//        return 0
+//    } else if char.isLetter {
+//        return 1
+//    } else if char.isNumber {
+//        return 2
+//    } else {
+//        return 3
+//    }
+//}
+//
+//let sortedArray = characters.sorted { char1, char2 in
+//    let g1 = group(for: char1)
+//    let g2 = group(for: char2)
+//    
+//    if g1 == g2 {
+//        return String(char1).lowercased() < String(char2).lowercased()
+//    } else {
+//        return g1 < g2
+//    }
+//}
+//
+//let result = String(sortedArray)
+//print(result)
+//
+///*
+// 5. Проделайте задание №3 но для нахождения минимальной и максимальной буквы из массива букв (соответственно скалярному значению)
+// */
+//
+//func findMinAndMaxStringElement(in array: [Character], using closure: (Character, Character) -> Bool) -> Character {
+//    var temp: Character = " "
+//    
+//    for letter in array {
+//        if closure(letter, temp) {
+//            temp = letter
+//        }
+//    }
+//    return temp
+//}
+//
+////let minLetter = findMinAndMaxStringElement(in: char) { current, temp in
+////    temp == " " || current!.value < temp.unicodeScalars.first!.value
+////}
+////
+////print("скаляр - \(minLetter.unicodeScalars.first!.value), значение \"\(minLetter)\"")

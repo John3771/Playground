@@ -44,9 +44,9 @@ func checkSquare(letter: HorizontalMove, number: VerticalMove) -> String {
     let color = (letter.number + number.rawValue) % 2 == 0 ? "black" : "white"
     
     //MARK: Вопрос почему я не могу созданные константы (Х, У) использовать в тернарном операторе
-    //    let x = letter.number
-    //    let y = number
-    //    (x + y) % 2 == 0 ? "black" : "white"
+        let x = letter.number
+    let y = number.rawValue
+        (x + y) % 2 == 0 ? "black" : "white"
     
     return "\(coordinate) - this square has \(color) color"
 }
