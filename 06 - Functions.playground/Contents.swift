@@ -23,45 +23,16 @@ enum VerticalMove: Int {
     case one = 1, two, three, four, five, six, seven, eight
 }
 
-//var verticalMove = 1
-//
-//switch verticalMove {
-//case 1: 1
-//case 2: 2
-//case 3: 3
-//case 4: 4
-//case 5: 5
-//case 6: 6
-//case 7: 7
-//case 8: 8
-//default: 1
-//}
-
-
 func checkSquare(letter: HorizontalMove, number: VerticalMove) -> String {
 
     let coordinate = "\(letter.rawValue)\(number.rawValue)"
     let color = (letter.number + number.rawValue) % 2 == 0 ? "black" : "white"
-    
-    //MARK: Вопрос почему я не могу созданные константы (Х, У) использовать в тернарном операторе
-        let x = letter.number
-    let y = number.rawValue
-        (x + y) % 2 == 0 ? "black" : "white"
-    
+
     return "\(coordinate) - this square has \(color) color"
 }
 
 let firstMove = checkSquare(letter: .e, number: .five)
 print("Your move is \(firstMove)")
-
-
-
-
-
-
-
-
-
 
 /*
  2. Создайте функцию, которая принимает массив, а возвращает массив в обратном порядке. Можете создать еще одну, которая принимает последовательность и возвращает массив в обратном порядке. Чтобы не дублировать код, сделать так, чтобы функция с последовательностью вызывала первую.
@@ -111,22 +82,7 @@ func prettyRegularArray2(_ array: inout [Int]) {
 prettyRegularArray2(&inOutnumbers)
 print(inOutnumbers)
 
-// Если убрать ключевое слово INOUT то функция не сможет изменить уже существующую переменную так как все передаваемые в функцию значения являются константами. Соответственно придется объявлять новый let/var с вызовом функции
-
-func inOutCheck(_ number: inout Int) {
-    number *= 2
-}
-var num = 11
-inOutCheck(&num)
-
-
-
-
-
-
-
-
-
+//MARK: Если убрать ключевое слово INOUT то функция не сможет изменить уже существующую переменную так как все передаваемые в функцию значения являются константами. Соответственно придется объявлять новый let/var с вызовом функции
 
 /*
  4. Создать функцию, которая принимает строку,

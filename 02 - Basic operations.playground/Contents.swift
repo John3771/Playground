@@ -23,12 +23,8 @@ if quarter < 1 || quarter > 4 {
     print("Я родился в \(quarter) квартале.")
 }
 
-
-
-
-
-
 // 3. Шахматная доска 8х8. Каждое значение в диапазоне 1…8. При заданных двух значениях по вертикали и горизонтали определите цвет поля. Если хотите усложнить задачу, то вместо цифр на горизонтальной оси используйте буквы a,b,c,d,e,f,g,h
+
 enum File: Int { //vertical numbers
     case one = 1, two, three, four, five, six, seven,  eight
 }
@@ -63,4 +59,3 @@ if (file.rawValue + rank.rawValue) % 2 == 0 {
 //} else {
 //    print("Invalid inserted value.")
 //}
-
