@@ -125,7 +125,10 @@ print(sortedShit)
  (соответственно скалярному значению)
  */
 
-func findMinAndMaxStringElement(in array: [Character], using closure: (Character, Character) -> Bool) -> Character {
+func findMinAndMaxStringElement(
+    in array: [Character],
+    using closure: (Character, Character) -> Bool
+) -> Character {
     var temp: Character = " "
     
     for letter in array {

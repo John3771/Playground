@@ -29,16 +29,22 @@ if quarter < 1 || quarter > 4 {
 
 
 // 3. Шахматная доска 8х8. Каждое значение в диапазоне 1…8. При заданных двух значениях по вертикали и горизонтали определите цвет поля. Если хотите усложнить задачу, то вместо цифр на горизонтальной оси используйте буквы a,b,c,d,e,f,g,h
+enum File: Int { //vertical numbers
+    case one = 1, two, three, four, five, six, seven,  eight
+}
 
-let vertical = 1
-let horizontal = 7
-let letters = ["a", "b", "c", "d", "e", "f", "g", "h"]
-let horizontalIndex = letters[horizontal]
+enum Rank: Int {
+    case a = 1, b, c, d, e, f, g, h
+}
 
+let file: File = .eight
+let rank: Rank = .d
 
-
-print("количество элементов \(letters.count)")
-print(horizontalIndex)
+if (file.rawValue + rank.rawValue) % 2 == 0 {
+    print("BBC")
+} else {
+    print("opposite 4 BBC no one know what is it")
+}
 
 //for vertical in 1...8 {
 //    for horizontal in 0..<letters.count {
@@ -50,26 +56,11 @@ print(horizontalIndex)
 //    }
 //}
 
-
-//if (vertical % 2 == 0 && vertical > 0 && vertical < 9) && (horizontal % 2 == 0 && horizontal > 0 && horizontal < 9) {
-//    print("black")
+//if (vertical + horizontal) % 2 == 0 && vertical > 0 && horizontal > 0 && vertical < 9 && horizontal < 9 {
+//    print("black square")
+//} else if (vertical + horizontal) % 2 == 1 && vertical > 0 && horizontal > 0 && vertical < 9 && horizontal < 9 {
+//    print("white square")
 //} else {
-//    print("white")
+//    print("Invalid inserted value.")
 //}
-
-//if vertical % 2 == 0 && vertical > 0 && vertical < 9 {
-//    if horizontal % 2 == 0 && horizontal > 0 && horizontal < 9 {
-//        print(
-//    }
-//} else {
-//    
-//}
-
-if (vertical + horizontal) % 2 == 0 && vertical > 0 && horizontal > 0 && vertical < 9 && horizontal < 9 {
-    print("black square")
-} else if (vertical + horizontal) % 2 == 1 && vertical > 0 && horizontal > 0 && vertical < 9 && horizontal < 9 {
-    print("white square")
-} else {
-    print("Invalid inserted value.")
-}
 
