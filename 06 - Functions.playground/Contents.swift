@@ -45,9 +45,12 @@ func prettyRegularArray(_ array: [Int]) -> [Int] {
     Array(array.reversed())
 }
 
-//MARK: ChatGPT
+//MARK: ChatGPT Непонятно нихуя
 
-func prettyWeirdSequence<S: Sequence>(_ sequence: S, using transformer: ([Int]) -> [Int]) -> [Int] where S.Element == Int {
+func prettyWeirdSequence<S: Sequence>(
+    _ sequence: S,
+    using transformer: ([Int]) -> [Int]
+) -> [Int] where S.Element == Int {
     let array = Array(sequence)      // превращаем последовательность в массив
     return transformer(array)        // применяем переданную функцию
 }
@@ -56,14 +59,6 @@ let regularArray = prettyRegularArray(numbers)
 let result = prettyWeirdSequence(weirdSequence, using: prettyRegularArray)
 
 print("Резульат первой функции - \(regularArray),\nРезультат второй функции \(result)")
-
-
-
-
-
-
-
-
 
 /*
  3. Inout: Выполнить задание номер 3 так, чтобы функция не возвращала перевернутый массив, но меняла элементы в существующем. Что будет если убрать inout?
@@ -105,18 +100,14 @@ func magicalTransformation(_ string: String) -> String {
     
     var result = ""
     
+    //MARK: непонятно почему цифры превращенные в строку не подвергаются трансформации дальнейшей
+    
     for char in string {
-        if char.isPunctuation {
-            continue
-        } else if let word = numberToChar[char] {
-            result += word
-        } else if vowels.contains(char) {
-            result += char.uppercased()
-        } else if char.isLetter {
-            result += char.lowercased()
-        } else {
-            result += String(char)
-        }
+        if char.isPunctuation { continue }
+        else if let word = numberToChar[char] { result += word }
+        else if vowels.contains(char) { result += char.uppercased() }
+        else if char.isLetter { result += char.lowercased() }
+        else { result += String(char) }
     }
     return result
 }
