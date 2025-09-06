@@ -6,12 +6,12 @@
  */
 
 enum PiecesType: String {
-    case pawn = "Pawn"
+    case pawn   = "Pawn"
     case knight = "Knight"
     case bishop = "Bishop"
-    case rook = "Rook"
-    case queen = "Queen"
-    case king = "King"
+    case rook   = "Rook"
+    case queen  = "Queen"
+    case king   = "King"
 }
 
 enum Color: String {
@@ -21,7 +21,7 @@ enum Color: String {
 
 struct Position {
     let horizontal: Character
-    let vertical: Int
+    let vertical:   Int
 }
 
 struct ChessPieces {
@@ -85,6 +85,8 @@ func unicodeSymbol(for piece: ChessPieces) -> String {
 let king = unicodeSymbol(for: blackKing)
 print(king)
 
+//MARK: GPT
+
 func printChessBoard(with pieces: [ChessPieces]) {
     let files: Array<Character> = ["a","b","c","d","e","f","g","h"]
     let ranks: Array<Int> = Array((1...8).reversed())
@@ -95,6 +97,7 @@ func printChessBoard(with pieces: [ChessPieces]) {
             if let piece = pieces.first(
                 where: {
                     $0.position.horizontal == file && $0.position.vertical == rank
+//                    $0.position.horizontal == file && $0.position.vertical == rank
                 }) {
                 row += unicodeSymbol(for: piece)
             } else {
@@ -112,7 +115,7 @@ printChessBoard(with: currentCgessSituation)
 
 
 /*
-
+ 4. Создать функцию, которая будет принимать шахматную фигуру и тюпл новой позиции. Эта функция должна передвигать фигуру на новую позицию, причем перемещение должно быть легальным: нельзя передвинуть фигуру за пределы поля и нельзя двигать фигуры так, как нельзя их двигать в реальных шахматах (для мегамонстров программирования). Вызовите эту функцию для нескольких фигур и распечатайте поле снова.
  */
 
 func nextMove1(_ piece: inout ChessPieces, move: (String, Int)) {
