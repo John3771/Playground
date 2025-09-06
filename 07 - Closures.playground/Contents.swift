@@ -41,7 +41,10 @@ print(inDescendingOrder)
  в конце функции возвращайте переменную.
  */
 
-func findElement(in array: [Int], using closure: (Int, Int?) -> Bool) -> Int? {
+func findElement(
+    in array: [Int],
+    using closure: (Int, Int?) -> Bool
+) -> Int? {
     var temp: Int? = nil
     
     for element in array {
@@ -115,23 +118,26 @@ print(sortedShit)
 //let result = String(sortedArray)
 //print(result)
 //
-///*
-// 5. Проделайте задание №3 но для нахождения минимальной и максимальной буквы из массива букв (соответственно скалярному значению)
-// */
-//
-//func findMinAndMaxStringElement(in array: [Character], using closure: (Character, Character) -> Bool) -> Character {
-//    var temp: Character = " "
-//    
-//    for letter in array {
-//        if closure(letter, temp) {
-//            temp = letter
-//        }
-//    }
-//    return temp
+
+/*
+ 5. Проделайте задание №3 но для нахождения
+ минимальной и максимальной буквы из массива букв
+ (соответственно скалярному значению)
+ */
+
+func findMinAndMaxStringElement(in array: [Character], using closure: (Character, Character) -> Bool) -> Character {
+    var temp: Character = " "
+    
+    for letter in array {
+        if closure(letter, temp) {
+            temp = letter
+        }
+    }
+    return temp
+}
+
+//let minLetter = findMinAndMaxStringElement(in: char) { current, temp in
+//    temp == " " || current!.value < temp.unicodeScalars.first!.value
 //}
 //
-////let minLetter = findMinAndMaxStringElement(in: char) { current, temp in
-////    temp == " " || current!.value < temp.unicodeScalars.first!.value
-////}
-////
-////print("скаляр - \(minLetter.unicodeScalars.first!.value), значение \"\(minLetter)\"")
+//print("скаляр - \(minLetter.unicodeScalars.first!.value), значение \"\(minLetter)\"")
