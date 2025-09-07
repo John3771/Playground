@@ -66,12 +66,12 @@ for student in students {
     journal[key] = student
 }
 
+/*
+ 3. Распечатать дикшинари
+ 4. В цикле пройтись по всем ключам в словаре и распечатать имя и фамилию каждого студента + его фразу приветствия.
+ */
+
 for (key, value) in journal {
     print("\(key): \(value.greeting)")
 }
-
-
-
-
-
 
