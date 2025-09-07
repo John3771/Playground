@@ -67,10 +67,41 @@ printInformationAboutStudents(in: journal)
  по убыванию и распечатать “журнал”.
  */
 
-let sortedJournal = journal.sorted { $0.averageGradePoint > $1.averageGradePoint }
+let sortedJournalAscending = journal.sorted { $0.averageGradePoint > $1.averageGradePoint }
 
 //let sortedJournal = journal.sorted { Student1, Student2 in
 //    Student1.averageGradePoint > Student2.averageGradePoint
 //}
 
-printInformationAboutStudents(in: sortedJournal)
+printInformationAboutStudents(in: sortedJournalAscending)
+
+/*
+ 4. Отсортировать теперь массив по фамилии (по возрастанию), причем если фамилии одинаковые, нужно сделать так, чтобы сравнение шло по имени. Распечатать “журнал”.
+ */
+
+let sortedBySurnameDescending = journal.sorted { $0.surname < $1.surname }
+
+printInformationAboutStudents(in: sortedBySurnameDescending)
+
+/*
+ 5. Создать переменную и присвоить ей существующий массив. Изменить в нем данные всех студентов. Изменится ли первый массив? Распечатать оба массива.
+ */
+print()
+
+var newJournal = journal
+
+newJournal.removeAll()
+printInformationAboutStudents(in: journal)
+print()
+printInformationAboutStudents(in: newJournal)
+print(newJournal.isEmpty)
+
+
+//MARK: Ответ - нет, не изменится. Это что-то про value type и все такое. Наша новая переменная принимает значения старого журнала и становится независимой инстанцией.
+
+
+/*
+ 6. Теперь проделть все тоже самое, но не для структуры Студент, а для класса. Какой результат в 5м задании? Что изменилось и почему?
+ */
+
+//MARK: Ответ - да, на этот раз изменится ведь мы создаем ссылку на экземпляр. Собственно это вроде основное отличие между структурами и классами.
