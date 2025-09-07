@@ -87,27 +87,6 @@ print(king)
 
 //MARK: GPT
 
-func huy(with pieces: [ChessPieces]) {
-    let files: Array<Character> = ["a","b","c","d","e","f","g","h"]
-    let ranks: Array<Int> = Array((1...8).reversed())
-    
-    for rank in ranks {
-        var row = ""
-        
-        for file in files {
-            if let piece = pieces.first(
-                where: {
-                    $0.position.horizontal == file &&
-                    $0.position.vertical == rank
-                }) {
-                row += unicodeSymbol(for: piece)
-            }
-        }
-    }
-}
-
-
-
 func printChessBoard(with pieces: [ChessPieces]) {
     let files: Array<Character> = ["a","b","c","d","e","f","g","h"]
     let ranks: Array<Int> = Array((1...8).reversed())
@@ -117,8 +96,8 @@ func printChessBoard(with pieces: [ChessPieces]) {
         for file in files {
             if let piece = pieces.first(
                 where: {
-                    $0.position.horizontal == file && $0.position.vertical == rank
-//                    $0.position.horizontal == file && $0.position.vertical == rank
+                    $0.position.horizontal == file &&
+                    $0.position.vertical == rank
                 }) {
                 row += unicodeSymbol(for: piece)
             } else {
