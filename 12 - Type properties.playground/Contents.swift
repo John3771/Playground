@@ -60,4 +60,60 @@ struct FileDescription {
 
 /*
  2. Создать энум, который будет представлять некую цветовую гамму. Этот энум должен быть типа Int и как raw значение должен иметь соответствующее 3 байтное представление цвета. Добавить в этот энум 3 свойства типа: количество цветов в гамме, начальный цвет и конечный цвет.
+ 
+ Что написано в задании
+
+ ...
+
+ Где возникает несостыковка
+     1.    Ты сделал так:
+ case red = "FFFFFF"
+
+ Ошибка в том, что "FFFFFF" — это строка, а не Int. Компилятор сразу скажет: «чувак, rawValue должен быть Int».
+
+ 2.    Что имели в виду авторы задания:
+«3-байтное представление цвета» — это число в шестнадцатеричном виде, например:
+ •    красный 0xFF0000
+ •    зелёный 0x00FF00
+ •    синий 0x0000FF
+Это просто целые числа (Int), записанные в 16-ричной системе.
+ 
  */
+
+enum ColorWheel: Int, CaseIterable { // чтоб пройтись по элементам энама надо чтоб этот педик соответствовал протоколу CaseIterable
+    case red = 0xFF0000
+    case blue = 0x00FF00
+    case green = 0x0000FF
+    
+    static var numberOfStoredColors: Int {
+        ColorWheel.allCases.count
+}
+    static var firstColor: ColorWheel { .red }
+    static var lastColor: ColorWheel { .green }
+}
+
+/*
+ 3. Создать класс человек, который будет содержать имя, фамилию, возраст, рост и вес. Добавить несколько свойств непосредственно этому классу чтобы контролировать:
+ - минимальный и максимальный возраст каждого объекта
+ - минимальную и максимальную длину имени и фамилии
+ - минимально возможный рост и вес
+ - самое интересное, создайте свойство, которое будет содержать количество созданных объектов этого класса
+ */
+
+class Human {
+    let name: String
+    let surname: String
+    let age: String
+    let height: Double
+    let weight: Double
+    
+    init(name: String, surname: String, age: String, height: Double, weight: Double) {
+        self.name = name
+        self.surname = surname
+        self.age = age
+        self.height = height
+        self.weight = weight
+    }
+    
+    
+}
