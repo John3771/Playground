@@ -76,13 +76,3 @@ for (key, value) in journal {
 }
 
 // какая-то строка для проверки пул реквеста
-
-for (key, value) in journal {
-    print("\(key): \(value.greeting)")
-}
-for (key, value) in journal {
-    print("\(key): \(value.greeting)")
-}
-for (key, value) in journal {
-    print("\(key): \(value.greeting)")
-}
