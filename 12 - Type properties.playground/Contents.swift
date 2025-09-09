@@ -107,7 +107,7 @@ enum ColorWheel: Int, CaseIterable { // чтоб пройтись по элем�
     let height: Double
     let weight: Double
     
-    //static используется для хранения значений чтоб были общими для каждого экземпляра
+    //static используется для хранения значений чтоб были общими для каждого экземпляра. Хранятся только внутри типа и не доступны извне
     static let minAge = 0
     static let maxAge = 110
     
@@ -139,6 +139,9 @@ enum ColorWheel: Int, CaseIterable { // чтоб пройтись по элем�
         
         Human.instanceCount += 1
     }
-    
-    
 }
+
+let dude = Human(name: "Frank", surname: "Ocean", age: 34, height: 170, weight: 66)
+let fag = Human(name: "Elton", surname: "John", age: 65, height: 159, weight: 74)
+print(Human.instanceCount)
+
