@@ -100,19 +100,44 @@ enum ColorWheel: Int, CaseIterable { // чтоб пройтись по элем�
  - самое интересное, создайте свойство, которое будет содержать количество созданных объектов этого класса
  */
 
-class Human {
+@MainActor class Human {
     let name: String
     let surname: String
-    let age: String
+    let age: Int
     let height: Double
     let weight: Double
     
-    init(name: String, surname: String, age: String, height: Double, weight: Double) {
+    //static используется для хранения значений чтоб были общими для каждого экземпляра
+    static let minAge = 0
+    static let maxAge = 110
+    
+    static let minNameLenght = 2
+    static let maxNameLenght = 20
+    
+    static let minHeight = 20.0
+    static let maxHeight = 240.0
+    
+    static let minWeight = 3.0
+    static let maxWeight = 300.0
+    
+    static var instanceCount = 0 //ебаная ошибка - особенность новой версии свифта. чет с многопоточность. связано. Пока присваиваем ьэйнактор и не выебываемся -> присваивание его переменной instanceCount не решает проблему - тогда нужно писать еще какой-то громоздкий код при присваивании нового значения. Но можно присвоить мэйн актор самому классу тогда проблема решается.
+    
+    //Почему инициализатор опциональный? окей. при распаковке в любом случае нужен опционал, точно. Значения то может и не быть.
+    init?(name: String, surname: String, age: Int, height: Double, weight: Double) {
+        guard age >= Human.minAge && age <= Human.maxAge,
+              name.count >= Human.minNameLenght && name.count <= Human.maxNameLenght,
+              surname.count >= Human.minNameLenght && surname.count <= Human.maxNameLenght,
+              height >= Human.minHeight && height <= Human.maxHeight,
+              weight >= Human.minWeight && weight <= Human.maxWeight
+        else { return nil }
+        
         self.name = name
         self.surname = surname
         self.age = age
         self.height = height
         self.weight = weight
+        
+        Human.instanceCount += 1
     }
     
     
