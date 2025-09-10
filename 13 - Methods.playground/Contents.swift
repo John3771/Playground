@@ -71,5 +71,30 @@ print(npcPlace.findPosition(in: room))
  */
 
 class Box {
+    var coordinateX: Int
+    var coordinateY: Int
     let room: Room
+    
+    init(coordinateX: Int, coordinateY: Int, room: Room) {
+        self.coordinateX = coordinateX
+        self.coordinateY = coordinateY
+        self.room = room
+    }
 }
+
+extension NPC {
+    func findPosition(in room: Room, with box: Box) -> String {
+        return "Наш челик находится в комнате размером \(room.width) на \(room.height). А сам он стоит в точке \(coordinateX)x\(coordinateY). Коробка расположена рядом с ним по координатам \(box.coordinateX) \(box.coordinateY)"
+    }
+}
+
+let box = Box(coordinateX: 111, coordinateY: 91, room: room)
+
+print(npcPlace.findPosition(in: room, with: box))
+
+/*
+ 4. Теперь самое интересное, персонаж может двигать ящик, если он стоит на том месте, куда персонаж хочет попасть. Главное что ни один объект не может покинуть пределы комнаты. Подвигать ящик
+ */
+
+    // допустим чел подходит к ящику... так это мне наверное надо расширить наш блок enum с проверкой по координатам ящика и если они совпадают то двигать ящик в +\- 1 при этом проверяя чтоб за границы комнаты он не вылазил. Соответственно в зависимости от граница либо прибавлять либо выетать значение.
+
