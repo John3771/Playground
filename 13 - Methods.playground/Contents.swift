@@ -40,13 +40,13 @@ class NPC {
     func move(_ direction: Direction) {
         switch direction {
         case .left:
-            if coordinateX > 0 { coordinateX -= 10 }
+            if coordinateX > 0 { coordinateX -= 1 }
         case .right:
-            if coordinateX < room.width { coordinateX += 10 }
+            if coordinateX < room.width { coordinateX += 1 }
         case .up:
-            if coordinateY > 0 { coordinateY += 10 }
+            if coordinateY > 0 { coordinateY -= 1 }
         case .down:
-            if coordinateY < room.height { coordinateY -= 10 }
+            if coordinateY < room.height { coordinateY += 1 }
         }
     }
 }
@@ -98,3 +98,12 @@ print(npcPlace.findPosition(in: room, with: box))
 
     // допустим чел подходит к ящику... так это мне наверное надо расширить наш блок enum с проверкой по координатам ящика и если они совпадают то двигать ящик в +\- 1 при этом проверяя чтоб за границы комнаты он не вылазил. Соответственно в зависимости от граница либо прибавлять либо выетать значение.
 
+
+    //MARK: Абсолютно невыполнимо
+
+    /*
+     4. Теперь самое интересное, персонаж может двигать ящик, если он стоит на том месте, куда персонаж хочет попасть. Главное что ни один объект не может покинуть пределы комнаты. Подвигать ящик :)
+     5. Добавить точку в комнате, куда надо ящик передвинуть и двигайте :)
+     6. Можно добавить массив ящиков и можете сделать консольное приложение
+
+     */
