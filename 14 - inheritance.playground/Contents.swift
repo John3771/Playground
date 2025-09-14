@@ -136,6 +136,7 @@ air.travelInfo(for: 50)
 /*
  3. Есть 5 классов: люди, крокодилы, обезьяны, собаки, жирафы. (в этом задании вы будете создавать не дочерние классы, а родительские и ваша задача создать родительский таким образом, что бы группировать эти 5).
  - Создайте по пару объектов каждого класса.
+ 
  - Посчитайте присмыкающихся (создайте масив, поместите туда присмыкающихся и скажите сколько в нем объектов)
  - Сколько четвероногих?
  - Сколько здесь животных?
@@ -143,3 +144,73 @@ air.travelInfo(for: 50)
  */
 
 
+class Animal {
+    let legs: Int
+    let isAnimal = true
+    
+    init(legs: Int) {
+        self.legs = legs
+    }
+}
+
+class Mammal: Animal {
+    let isWarmBlooded = true
+}
+
+class Reptile: Animal {
+    let isColdBlooded = true
+}
+
+class Human: Mammal {
+    func brainDamage() {
+        print("tiktok maxing for 16 hours straight.")
+    }
+}
+
+class Monkey: Mammal {
+    func monkeyBuisness() {
+        print("I'm monkey. And what? At least I'm free.")
+    }
+}
+
+class Crocodile: Reptile {
+    func bagDealer() {
+        print("Living life to become a whore’s handbag")
+    }
+}
+
+class Dog: Mammal {
+    func bark() {
+        print("Bark! Bark!... fucking trashbag. What r u looking 4!? Give some food!!!!")
+    }
+}
+
+class Giraffe: Mammal {
+    func girafeLife() {
+        print("just wanna some leafs")
+    }
+}
+
+let dude1 = Human(legs: 2)
+let dude2 = Human(legs: 2)
+
+let monkey1 = Monkey(legs: 4)
+let monkey2 = Monkey(legs: 4)
+
+let croco1 = Crocodile(legs: 4)
+let croco2 = Crocodile(legs: 4)
+
+let dog1 = Dog(legs: 4)
+let dog2 = Dog(legs: 4)
+
+let giraffe1 = Giraffe(legs: 4)
+let giraffe2 = Giraffe(legs: 4)
+
+let creatures = [dude1, dude2, monkey1, monkey2, croco1, croco2, dog1, dog2, giraffe1, giraffe2]
+
+let reptiles = creatures.filter { $0 is Reptile }
+let foueLegs = creatures.filter { $0.legs == 4 }
+let animals = creatures.filter { $0.isAnimal }
+
+print()
+print("Ну и эээ у нас типа \(reptiles.count) крокорептилий, животных у нас \(animals.count), и четвероногих - \(foueLegs.count) - вот столько.")
