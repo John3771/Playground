@@ -1,18 +1,9 @@
-
-
-let numbers: [Int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-func isPrimalNumber(number: Int) -> Bool {
-    if number < 2 { return false }
-    if number == 2 { return true }
-    for i in 2...Int(Double(number).squareRoot()) {
-        if number % i == 0 {
-            return false
-        }
-    }
-    return true
+func test(character: Character) -> String? {
+        
+    guard let scalar = character.lowercased().unicodeScalars.first?.value, scalar >= 97, scalar <= 104 else { return "huy tebe" }
+    
+    return String(scalar - 96)
 }
 
-let result = numbers.filter { !isPrimalNumber(number: $0) }
-print(result)
+test(character: "u")
 
